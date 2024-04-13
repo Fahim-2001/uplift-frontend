@@ -1,12 +1,13 @@
-import { Button } from '@mui/material'
+// import { Button } from '@mui/material'
 import './App.css'
+import { RouterProvider } from 'react-router-dom'
+import routes from './routes/Routes'
 
 function App() {
 
   return (
     <div>
-      <p className='text-4xl'>Hello</p>
-      <Button variant="outlined" >Outlined</Button>
+      <RouterProvider router={routes}></RouterProvider>
     </div>
   )
 }
