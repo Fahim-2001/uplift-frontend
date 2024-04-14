@@ -33,7 +33,7 @@ const SignInForm = () => {
         onSubmit={handleSubmit(handleSignIn)}
       >
         <div className="mb-3">
-          <label htmlFor="" className="block py-1">
+          <label className="block py-1">
             Email
           </label>
           <input
@@ -49,7 +49,7 @@ const SignInForm = () => {
         </div>
 
         <div className="mb-3">
-          <label htmlFor="" className="block py-1">
+          <label className="block py-1">
             Password
           </label>
           <input

@@ -30,7 +30,7 @@ const SignUpForm = () => {
       <form action="POST" ref={formRef} onSubmit={handleSubmit(handleStudentSignUp)}>
         <div className="flex flex-col lg:flex-row lg:justify-between mb-3">
           <div className="mb-3 lg:mb-0">
-            <label htmlFor="" className="block py-1">
+            <label className="block py-1">
               First Name
             </label>
             <input
@@ -48,7 +48,7 @@ const SignUpForm = () => {
           </div>
 
           <div>
-            <label htmlFor="" className="block py-1">
+            <label className="block py-1">
               Last Name
             </label>
             <input
@@ -67,7 +67,7 @@ const SignUpForm = () => {
         </div>
 
         <div className="mb-3">
-          <label htmlFor="" className="block py-1">
+          <label className="block py-1">
             Email
           </label>
           <input
@@ -83,7 +83,7 @@ const SignUpForm = () => {
         </div>
 
         <div className="mb-3">
-          <label htmlFor="" className="block py-1">
+          <label className="block py-1">
             Phone Number
           </label>
           <input
@@ -99,7 +99,7 @@ const SignUpForm = () => {
         </div>
 
         <div className="mb-3">
-          <label htmlFor="" className="block py-1">
+          <label className="block py-1">
             Institute Name
           </label>
           <input
@@ -115,7 +115,7 @@ const SignUpForm = () => {
         </div>
 
         <div className="mb-3">
-          <label htmlFor="" className="block py-1">
+          <label className="block py-1">
             Password
           </label>
           <input
@@ -133,7 +133,7 @@ const SignUpForm = () => {
         </div>
 
         <div className="mb-3">
-          <label htmlFor="" className="block py-1">
+          <label className="block py-1">
             Confirm Password
           </label>
           <input

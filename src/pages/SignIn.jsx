@@ -66,6 +66,7 @@ const SignIn = () => {
       </p>
       <div className="w-4/5 lg:w-1/2 mx-auto">
         <StyledButton btn={googleSignInBtn} />
+        <p className="text-center font-medium">Or</p>
         <SignInForm />
         <p className="text-sm text-right my-2">
           Don&apos;t have any account?{" "}
