@@ -18,7 +18,7 @@ const Header = () => {
       <Link className={navStyle}>
         Blog
       </Link>
-      <Link className={navStyle}>
+      <Link to="/signin" className={navStyle}>
         Sign In
       </Link>
       <Link className="block lg:inline bg-orange-500 hover:bg-orange-600 rounded-md px-5 py-1 lg:mx-2 text-white">
@@ -36,7 +36,7 @@ const Header = () => {
     setAnchorEl(null);
   };
   return (
-    <section className="flex justify-between items-center my-7">
+    <section className="flex justify-between items-center mt-7 mb-10">
       <div>
         <Link to="/">Logo</Link>
       </div>
