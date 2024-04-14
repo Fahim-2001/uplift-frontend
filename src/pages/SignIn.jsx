@@ -55,8 +55,9 @@ const SignIn = () => {
         <span>Sign In with Google</span>
       </p>
     ),
-    style:"border border-black hover:bg-gray-300 px-5 py-1 my-5 rounded-md w-full",
-    func: ()=> console.log("Google SignIn Clicked!")
+    style:
+      "border border-black hover:bg-gray-300 px-5 py-1 my-5 rounded-md w-full",
+    func: () => console.log("Google SignIn Clicked!"),
   };
   return (
     <section>
@@ -65,10 +66,12 @@ const SignIn = () => {
       </p>
       <div className="w-4/5 lg:w-1/2 mx-auto">
         <StyledButton btn={googleSignInBtn} />
-        <SignInForm/>
+        <SignInForm />
         <p className="text-sm text-right my-2">
           Don&apos;t have any account?{" "}
-          <Link className="text-blue-900">Sign Up</Link>
+          <Link className="text-blue-900" to="/signup">
+            Sign Up
+          </Link>
         </p>
       </div>
     </section>
