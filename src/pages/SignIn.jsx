@@ -61,7 +61,7 @@ const SignIn = () => {
   return (
     <section>
       <p className="text-3xl lg:text-4xl text-center text-orange-500 font-medium mb-10">
-        Sign In with Your Account
+        Sign In with Your Account From Dev
       </p>
       <div className="w-4/5 lg:w-1/2 mx-auto">
         <StyledButton btn={googleSignInBtn} />
