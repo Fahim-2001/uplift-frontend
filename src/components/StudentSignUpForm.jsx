@@ -4,8 +4,9 @@ import StyledButton from "./StyledButton";
 import axios from "axios";
 import { toast } from "react-toastify";
 import CustomInputField from "./CustomInputField";
+import { redirect } from "react-router-dom";
 
-const SignUpForm = () => {
+const StudentSignUpForm = () => {
   const [passErr, setPassErr] = useState("");
   const formRef = useRef();
   const {
@@ -26,27 +27,24 @@ const SignUpForm = () => {
         return;
       }
 
-      axios
-        .all([
-          axios.post("http://localhost:8000/api/v1/user", data),
-          axios.post("http://localhost:8000/api/v1/student", data),
-        ])
-        .then(
-          axios.spread((userRes, studentRes) => {
-            // console.log("User => ", userRes ,"Student => ", studentRes);
-            if (userRes.status == 201 && studentRes.status == 201) {
-              toast.success("Registration Successful", {
-                position: "top-center",
-                autoClose: 1000,
-              });
-            } else {
-              toast.warning("Registration Failed, Please Try Again!", {
-                position: "top-center",
-                autoClose: 1000,
-              });
-            }
-          })
-        );
+      axios.post("http://localhost:8000/api/v1/user", data).then((response) => {
+        console.log("User => ", response);
+        localStorage.setItem("token", response?.data?.token);
+        const user = response?.data?.essentials;
+        localStorage.setItem("user",JSON.stringify(user));
+        if (response.status == 201) {
+          toast.success("Registration Successful", {
+            position: "top-center",
+            autoClose: 1000,
+          });
+          redirect('/');
+        } else {
+          toast.warning("Registration Failed, Please Try Again!", {
+            position: "top-center",
+            autoClose: 1000,
+          });
+        }
+      });
     } catch (error) {
       console.log(error.message);
     }
@@ -184,4 +182,4 @@ const SignUpForm = () => {
   );
 };
 
-export default SignUpForm;
+export default StudentSignUpForm;

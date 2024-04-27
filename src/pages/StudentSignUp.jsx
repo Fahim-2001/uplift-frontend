@@ -1,8 +1,8 @@
-import SignUpForm from "../components/SignUpForm";
+import StudentSignUpForm from "../components/StudentSignUpForm";
 import StyledButton from "../components/StyledButton";
 import { Link } from "react-router-dom";
 
-const SignUp = () => {
+const StudentSignUp = () => {
   const googleSignInBtn = {
     name: (
       <p className="flex justify-center items-center gap-5">
@@ -67,7 +67,7 @@ const SignUp = () => {
       <div className="w-4/5 lg:w-1/2 mx-auto">
         <StyledButton btn={googleSignInBtn} />
         <p className="text-center font-medium">Or</p>
-        <SignUpForm />
+        <StudentSignUpForm />
         <p className="text-sm text-right my-2">
           Already have an account?{" "}
           <Link className="text-blue-900" to="/signin">
@@ -85,4 +85,4 @@ const SignUp = () => {
   );
 };
 
-export default SignUp;
+export default StudentSignUp;
