@@ -1,8 +1,8 @@
-import SignUpForm from "../components/SignUpForm";
+import StudentSignUpForm from "../components/StudentSignUpForm";
 import StyledButton from "../components/StyledButton";
 import { Link } from "react-router-dom";
 
-const SignUp = () => {
+const StudentSignUp = () => {
   const googleSignInBtn = {
     name: (
       <p className="flex justify-center items-center gap-5">
@@ -62,16 +62,22 @@ const SignUp = () => {
   return (
     <section>
       <p className="text-3xl lg:text-4xl text-center text-orange-500 font-medium mb-10">
-        Sign Up with a New Account
+        Join us as a Student
       </p>
       <div className="w-4/5 lg:w-1/2 mx-auto">
         <StyledButton btn={googleSignInBtn} />
         <p className="text-center font-medium">Or</p>
-        <SignUpForm/>
+        <StudentSignUpForm />
         <p className="text-sm text-right my-2">
           Already have an account?{" "}
           <Link className="text-blue-900" to="/signin">
             Sign In
+          </Link>
+        </p>
+        <p className="text-sm text-right my-2">
+          Want to hire from us?{" "}
+          <Link className="text-blue-900" to="/signin">
+            Join as an employer.
           </Link>
         </p>
       </div>
@@ -79,4 +85,4 @@ const SignUp = () => {
   );
 };
 
-export default SignUp;
+export default StudentSignUp;

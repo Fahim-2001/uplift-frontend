@@ -1,11 +1,13 @@
+import { useNavigate } from "react-router-dom"
 import StyledButton from "../components/StyledButton"
 
 const Home = () => {
+    const navigate = useNavigate();
     const buttonStyle1 ={
         name: "Join as a Student",
         style: "border border-black hover:bg-gray-300 px-5 py-1 text-black rounded-xl",
         func: function (){
-            console.log('Student Clicked')
+            navigate('/signup')
         }
     }
 
