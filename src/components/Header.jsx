@@ -11,12 +11,15 @@ const Header = () => {
   const handleClose = () => {
     setAnchorEl(null);
   };
+  const handleSignOut = () => {
+    localStorage.clear();
+  };
 
   const navStyle =
     "block lg:inline rounded-md px-5 py-1 lg:mx-2 hover:bg-gray-200";
 
   const user = JSON.parse(localStorage.getItem("user"));
-  
+
   const navLinks = (
     <div className="px-5 lg:flex">
       <Link className={navStyle}>Programs</Link>
@@ -31,7 +34,7 @@ const Header = () => {
       {user && <Link className={navStyle}>Dashboard</Link>}
 
       {!user && (
-        <Link className="block lg:inline bg-orange-500 hover:bg-orange-600 rounded-md px-5 py-1 lg:mx-2 text-white">
+        <Link className="block lg:inline bg-primary hover:bg-hover rounded-md p-primary lg:mx-2 text-base">
           Book a Free Session
         </Link>
       )}
@@ -43,6 +46,7 @@ const Header = () => {
           fill="none"
           xmlns="http://www.w3.org/2000/svg"
           className="block lg:inline ml-4 lg:ml-0 py-1"
+          onClick={() => handleSignOut()}
         >
           <g id="SVGRepo_bgCarrier" strokeWidth="0"></g>
           <g

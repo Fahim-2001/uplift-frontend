@@ -4,10 +4,11 @@ import StyledButton from "./StyledButton";
 import axios from "axios";
 import { toast } from "react-toastify";
 import CustomInputField from "./CustomInputField";
-import { redirect } from "react-router-dom";
+import { useNavigate } from "react-router-dom";
 
 const StudentSignUpForm = () => {
   const [passErr, setPassErr] = useState("");
+  const navigate = useNavigate();
   const formRef = useRef();
   const {
     register,
@@ -28,16 +29,14 @@ const StudentSignUpForm = () => {
       }
 
       axios.post("http://localhost:8000/api/v1/user", data).then((response) => {
-        console.log("User => ", response);
-        localStorage.setItem("token", response?.data?.token);
-        const user = response?.data?.essentials;
-        localStorage.setItem("user",JSON.stringify(user));
+        // console.log("User => ", response);
+        localStorage.setItem("user", JSON.stringify(response.data.essentials));
         if (response.status == 201) {
           toast.success("Registration Successful", {
             position: "top-center",
             autoClose: 1000,
           });
-          redirect('/');
+          navigate("/");
         } else {
           toast.warning("Registration Failed, Please Try Again!", {
             position: "top-center",
@@ -49,7 +48,6 @@ const StudentSignUpForm = () => {
       console.log(error.message);
     }
   };
-
   const signInBtn = {
     name: "Sign In",
     style:
