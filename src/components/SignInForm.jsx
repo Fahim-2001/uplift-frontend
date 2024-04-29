@@ -1,9 +1,9 @@
 import { useForm } from "react-hook-form";
 import StyledButton from "./StyledButton";
 import { useRef } from "react";
+import CustomInputField from "./CustomInputField";
 
 const SignInForm = () => {
-  const fieldStyle = "border border-gray-300 w-full p-1 rounded-md";
   const formRef = useRef();
   const {
     register,
@@ -14,7 +14,7 @@ const SignInForm = () => {
   const handleSignIn = (data) => {
     try {
       console.log(data);
-    //   formRef.current.reset();
+      //   formRef.current.reset();
     } catch (error) {
       console.log(error.message);
     }
@@ -27,21 +27,17 @@ const SignInForm = () => {
   };
   return (
     <section>
-      <form
-        action="POST"
-        ref={formRef}
-        onSubmit={handleSubmit(handleSignIn)}
-      >
+      <form action="POST" ref={formRef} onSubmit={handleSubmit(handleSignIn)}>
         <div className="mb-3">
-          <label className="block py-1">
-            Email
-          </label>
-          <input
-            type="email"
-            placeholder="Enter your email"
-            required
-            className={fieldStyle}
-            {...register("email", { required: "Provide your email address" })}
+          <CustomInputField
+            fieldData={{
+              title: "Email",
+              type: "email",
+              placeholder: "Enter your email",
+              register,
+              name: "email",
+              errMsg: "Provide your email",
+            }}
           />
           {errors.email && (
             <p className="text-red-600">{errors.email?.message}</p>
@@ -49,17 +45,15 @@ const SignInForm = () => {
         </div>
 
         <div className="mb-3">
-          <label className="block py-1">
-            Password
-          </label>
-          <input
-            type="password"
-            placeholder="Enter password"
-            required
-            className={fieldStyle}
-            {...register("password", {
-              required: "Please provide your password!",
-            })}
+        <CustomInputField
+            fieldData={{
+              title: "Password",
+              type: "password",
+              placeholder: "Enter password",
+              register,
+              name: "password",
+              errMsg: "Please provide your password",
+            }}
           />
           {errors.password && (
             <p className="text-red-600">{errors.password?.message}</p>
