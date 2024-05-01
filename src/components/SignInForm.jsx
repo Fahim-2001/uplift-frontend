@@ -2,8 +2,12 @@ import { useForm } from "react-hook-form";
 import StyledButton from "./StyledButton";
 import { useRef } from "react";
 import CustomInputField from "./CustomInputField";
+import axios from "axios";
+import { toast } from "react-toastify";
+import { useNavigate } from "react-router-dom";
 
 const SignInForm = () => {
+  const navigate = useNavigate()
   const formRef = useRef();
   const {
     register,
@@ -13,8 +17,21 @@ const SignInForm = () => {
 
   const handleSignIn = (data) => {
     try {
-      console.log(data);
-      //   formRef.current.reset();
+      axios.post("http://localhost:8000/api/v1/auth",data).then(response=>{
+        localStorage.setItem("user", JSON.stringify(response.data.tokenizedUser));
+        if (response.status == 200) {
+          toast.success("Login Successful", {
+            position: "top-center",
+            autoClose: 1000,
+          });
+          navigate("/");
+        } else {
+          toast.warning("Login Failed, Please Try Again!", {
+            position: "top-center",
+            autoClose: 1000,
+          });
+        }
+      })
     } catch (error) {
       console.log(error.message);
     }

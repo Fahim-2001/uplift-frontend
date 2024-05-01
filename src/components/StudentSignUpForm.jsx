@@ -30,7 +30,7 @@ const StudentSignUpForm = () => {
 
       axios.post("http://localhost:8000/api/v1/user", data).then((response) => {
         // console.log("User => ", response);
-        localStorage.setItem("user", JSON.stringify(response.data.essentials));
+        localStorage.setItem("user", JSON.stringify(response.data.tokenizedUser));
         if (response.status == 201) {
           toast.success("Registration Successful", {
             position: "top-center",
