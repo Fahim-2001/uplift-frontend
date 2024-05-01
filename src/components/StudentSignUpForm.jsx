@@ -49,7 +49,7 @@ const StudentSignUpForm = () => {
     }
   };
   const signInBtn = {
-    name: "Sign In",
+    name: "Sign Up",
     style:
       "bg-orange-500 hover:bg-orange-600 px-5 py-1 text-white rounded-md w-full",
   };
