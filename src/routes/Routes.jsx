@@ -3,6 +3,7 @@ import Main from "../layouts/Main";
 import Home from "../pages/Home";
 import SignIn from "../pages/SignIn";
 import StudentSignUp from "../pages/StudentSignUp";
+import EmployerSignUp from "../pages/EmployerSignUp";
 
 const routes = createBrowserRouter([
   {
@@ -14,8 +15,12 @@ const routes = createBrowserRouter([
         element: <Home />,
       },
       {
-        path: "/signup",
+        path: "/student-signup",
         element: <StudentSignUp />,
+      },
+      {
+        path: "/employer-signup",
+        element: <EmployerSignUp/>
       },
       {
         path: "/signin",

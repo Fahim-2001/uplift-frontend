@@ -8,7 +8,7 @@ const CustomInputField = ({ fieldData }) => {
       <input
         type={type}
         placeholder={placeholder}
-        className={title === "First Name" || title === "Last Name" ? namesFieldStyle : normalFieldStyle}
+        className={title === "First Name" || title === "Last Name" || title === "Organisation Name" || title === "Organisation Phone Number" ? namesFieldStyle : normalFieldStyle}
         {...register(name, {
           required: errMsg,
         })}
