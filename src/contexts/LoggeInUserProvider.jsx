@@ -6,10 +6,10 @@ const LoggeInUserProvider = ({ children }) => {
   const [isInitialRender, setIsInitialRender] = useState(true);
   useEffect(() => {
     if (isInitialRender) {
-        setIsInitialRender(false);
-        setUser(JSON.parse(localStorage.getItem("user")));
-      }
-  }, [user,isInitialRender]);
+      setIsInitialRender(false);
+      setUser(JSON.parse(localStorage.getItem("user")));
+    }
+  }, [user, isInitialRender]);
 
   return (
     <LoggedInUserContext.Provider value={user}>

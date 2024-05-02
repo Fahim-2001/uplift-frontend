@@ -13,7 +13,7 @@ const Header = () => {
     setAnchorEl(null);
   };
   const handleSignOut = () => {
-    localStorage.removeItem('user');
+    localStorage.removeItem("user");
     window.location.reload();
   };
 
@@ -21,12 +21,16 @@ const Header = () => {
     "block lg:inline rounded-md px-5 py-1 lg:mx-2 hover:bg-gray-200";
 
   const user = useContext(LoggedInUserContext);
-
   const navLinks = (
     <div className="px-5 lg:flex">
       <Link className={navStyle}>Programs</Link>
-      {user?.roleId == 4 ||
-        (user == null && <Link className={navStyle}>Hire From Uplift</Link>)}
+      {(user?.roleId == 4 || user == null) && (
+        <>
+          <Link className={navStyle}>Hire From Uplift</Link>
+          <Link className={navStyle}>Post Jobs</Link>
+        </>
+      )}
+      {user?.roleId === 5 && <Link className={navStyle}>Apply Jobs</Link>}
       <Link className={navStyle}>Showcase</Link>
       <Link className={navStyle}>Blog</Link>
       {!user && (
