@@ -1,12 +1,12 @@
 import { useRef, useState } from "react";
+import CustomInputField from "./CustomInputField";
+import { useNavigate } from "react-router-dom";
 import { useForm } from "react-hook-form";
 import StyledButton from "./StyledButton";
 import axios from "axios";
 import { toast } from "react-toastify";
-import CustomInputField from "./CustomInputField";
-import { useNavigate } from "react-router-dom";
 
-const StudentSignUpForm = () => {
+const EmployerSignUpForm = () => {
   const [passErr, setPassErr] = useState("");
   const navigate = useNavigate();
   const formRef = useRef();
@@ -16,19 +16,16 @@ const StudentSignUpForm = () => {
     formState: { errors },
   } = useForm();
 
-  const handleStudentSignUp = (data) => {
+  const handleEmployerSignUp = (data) => {
     try {
-      if (!data.confirmPassword) {
-        setPassErr("Retype the password");
-        return;
-      }
+        if(data.password !== data.confirmPassword){
+            setPassErr("Password did'n match");
+            return;
+        }else{
+            setPassErr("");
+        }
 
-      if (data.password !== data.confirmPassword) {
-        setPassErr("Password didn't match");
-        return;
-      }
-
-      axios.post("http://localhost:8000/api/v1/user", data).then((response) => {
+        axios.post("http://localhost:8000/api/v1/user", data).then((response) => {
         // console.log("User => ", response);
         localStorage.setItem("user", JSON.stringify(response.data.tokenizedUser));
         if (response.status == 201) {
@@ -44,6 +41,7 @@ const StudentSignUpForm = () => {
           });
         }
       });
+      console.log(data);
     } catch (error) {
       console.log(error.message);
     }
@@ -58,7 +56,7 @@ const StudentSignUpForm = () => {
       <form
         action="POST"
         ref={formRef}
-        onSubmit={handleSubmit(handleStudentSignUp)}
+        onSubmit={handleSubmit(handleEmployerSignUp)}
       >
         <div className="flex flex-col lg:flex-row lg:justify-between mb-3">
           <div className="mb-3 lg:mb-0">
@@ -94,15 +92,49 @@ const StudentSignUpForm = () => {
           </div>
         </div>
 
+        <div className="flex flex-col lg:flex-row lg:justify-between mb-3">
+          <div className="mb-3 lg:mb-0">
+            <CustomInputField
+              fieldData={{
+                title: "Organisation Name",
+                type: "text",
+                placeholder: "Enter your organization name",
+                register,
+                name: "orgName",
+                errMsg: "Provide your organization name",
+              }}
+            />
+            {errors.orgName && (
+              <p className="text-red-600">{errors.orgName?.message}</p>
+            )}
+          </div>
+
+          <div>
+            <CustomInputField
+              fieldData={{
+                title: "Organisation Phone Number",
+                type: "text",
+                placeholder: "Enter your phone number",
+                register,
+                name: "phoneNumber",
+                errMsg: "Provide your phone number",
+              }}
+            />
+            {errors.phoneNumber && (
+              <p className="text-red-600">{errors.phoneNumber?.message}</p>
+            )}
+          </div>
+        </div>
+
         <div className="mb-3">
           <CustomInputField
             fieldData={{
-              title: "Email",
+              title: "Organisation Email",
               type: "email",
-              placeholder: "Enter your email",
+              placeholder: "Enter your organisation email",
               register,
               name: "email",
-              errMsg: "Provide your email",
+              errMsg: "Provide your organisation email",
             }}
           />
           {errors.email && (
@@ -113,32 +145,16 @@ const StudentSignUpForm = () => {
         <div className="mb-3">
           <CustomInputField
             fieldData={{
-              title: "Phone Number",
+              title: "Address",
               type: "text",
-              placeholder: "Enter your phone number",
+              placeholder: "Enter your organisation address",
               register,
-              name: "phoneNumber",
-              errMsg: "Provide your phone number",
+              name: "address",
+              errMsg: "Provide your organisation address",
             }}
           />
-          {errors.phoneNumber && (
-            <p className="text-red-600">{errors.phoneNumber?.message}</p>
-          )}
-        </div>
-
-        <div className="mb-3">
-          <CustomInputField
-            fieldData={{
-              title: "Institute Name",
-              type: "text",
-              placeholder: "Enter your institute name",
-              register,
-              name: "institute",
-              errMsg: "Provide your institute name",
-            }}
-          />
-          {errors.institute && (
-            <p className="text-red-600">{errors.institute?.message}</p>
+          {errors.address && (
+            <p className="text-red-600">{errors.address?.message}</p>
           )}
         </div>
 
@@ -166,7 +182,7 @@ const StudentSignUpForm = () => {
               placeholder: "Retype the password",
               register,
               name: "confirmPassword",
-              errMsg: "Please provide retype your password",
+              errMsg: "Please retype your password",
             }}
           />
           {(errors.confirmPassword && (
@@ -180,4 +196,4 @@ const StudentSignUpForm = () => {
   );
 };
 
-export default StudentSignUpForm;
+export default EmployerSignUpForm;
