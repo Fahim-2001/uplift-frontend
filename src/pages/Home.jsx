@@ -2,6 +2,7 @@ import { useNavigate } from "react-router-dom";
 import StyledButton from "../components/StyledButton";
 import OurPrograms from "../components/Home/OurPrograms";
 import SuccessStories from "../components/Home/SuccessStories";
+import Companies from "../components/Home/Companies";
 
 const Home = () => {
   const navigate = useNavigate();
@@ -46,11 +47,14 @@ const Home = () => {
         <StyledButton btn={buttonStyle1} />
         <StyledButton btn={buttonStyle2} />
       </div>
-      <div className="my-10">
+      <div className="my-10 md:my-16 lg:my-24">
         <OurPrograms />
       </div>
-      <div className="my-10">
+      <div className="my-10 md:my-16 lg:my-24">
         <SuccessStories />
+      </div>
+      <div className="my-10 md:my-16 lg:my-24">
+        <Companies/>
       </div>
     </section>
   );
