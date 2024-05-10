@@ -8,7 +8,7 @@ const Home = () => {
         name: "Join as a Student",
         style: "border border-black hover:bg-gray-300 p-primary text-black rounded-xl",
         func: function (){
-            navigate('/signup')
+            navigate('/student-signup')
         }
     }
 
@@ -16,7 +16,7 @@ const Home = () => {
         name: "Join as an Employer",
         style: "bg-primary hover:bg-hover p-primary text-white rounded-xl",
         func: function (){
-            console.log('Employer Clicked')
+            navigate('/employer-signup')
         }
     }
   return (
