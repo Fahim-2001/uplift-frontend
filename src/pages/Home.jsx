@@ -1,5 +1,6 @@
 import { useNavigate } from "react-router-dom"
 import StyledButton from "../components/StyledButton"
+import OurPrograms from "../components/Home/OurPrograms";
 
 const Home = () => {
     const navigate = useNavigate();
@@ -29,6 +30,9 @@ const Home = () => {
         <div className="flex flex-col lg:flex-row justify-center items-center gap-2 lg:gap-5">
             <StyledButton btn={buttonStyle1} />
             <StyledButton btn={buttonStyle2}/>
+        </div>
+        <div className="my-10">
+            <OurPrograms/>
         </div>
     </section>
   )

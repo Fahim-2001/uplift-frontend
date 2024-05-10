@@ -9,7 +9,7 @@ import 'react-toastify/dist/ReactToastify.css';
 function App() {
 
   return (
-    <div className='mx-5'>
+    <div className='mx-5 md:mx-10 lg:mx-20'>
       <RouterProvider router={routes}></RouterProvider>
       <ToastContainer/>
     </div>
