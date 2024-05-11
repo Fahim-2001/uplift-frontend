@@ -22,8 +22,8 @@ const Header = () => {
 
   const user = useContext(LoggedInUserContext);
   const navLinks = (
-    <div className="px-5 lg:flex">
-      <Link className={navStyle}>Programs</Link>
+    <div className="lg:flex">
+      <Link className={navStyle} to={"/programs"}>Programs</Link>
       {(user?.roleId == 4 || user == null) && (
         <>
           <Link className={navStyle}>Hire From Uplift</Link>
@@ -41,7 +41,7 @@ const Header = () => {
       {user && <Link className={navStyle}>Dashboard</Link>}
 
       {!user && (
-        <Link className="block lg:inline bg-primary hover:bg-hover rounded-md p-primary lg:mx-2 text-base">
+        <Link className="block lg:inline bg-primary hover:bg-hover rounded-md p-primary text-base">
           Book a Free Session
         </Link>
       )}
