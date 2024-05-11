@@ -1,6 +1,8 @@
+import { useNavigate } from "react-router-dom";
 import StyledButton from "../StyledButton";
 
 const ProgramComp = ({ program }) => {
+  const navigate = useNavigate();
   return (
     <div className="flex justify-between items-baseline mb-10 p-5 border border-base hover:border-primary hover:shadow-xl rounded-md transition hover:-translate-y-1 hover:scale-105">
       <div id="details">
@@ -40,7 +42,7 @@ const ProgramComp = ({ program }) => {
               name: "See details",
               style:
                 "bg-base border border-primary p-primary text-primary rounded-md",
-              func: () => console.log("clicked"),
+              func: () => navigate(`/programs/${program?.program?.prgId}`),
             }}
           />
           <StyledButton
