@@ -7,6 +7,9 @@ import EmployerSignUp from "../pages/EmployerSignUp";
 import Programs from "../pages/Programs";
 import Program from "../pages/Program";
 import axios from "axios";
+import ConfirmPayment from "../pages/ConfirmPayment";
+import PaymentFailed from "../pages/PaymentFailed";
+import PaymentSuccess from "../pages/PaymentSuccess";
 
 const routes = createBrowserRouter([
   {
@@ -50,6 +53,18 @@ const routes = createBrowserRouter([
           );
         },
         element: <Program />,
+      },
+      {
+        path: "/payment-confirm",
+        element: <ConfirmPayment />,
+      },
+      {
+        path: "/payment-failed/:tranId",
+        element: <PaymentFailed/>,
+      },
+      {
+        path: "/payment-success/:tranId",
+        element: <PaymentSuccess/>,
       },
     ],
   },

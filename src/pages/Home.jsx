@@ -43,10 +43,10 @@ const Home = () => {
           Your partner to build yourself.
         </p>
       </div>
-      <div className="flex flex-col lg:flex-row justify-center items-center gap-2 lg:gap-5">
+     {!user && <div className="flex flex-col lg:flex-row justify-center items-center gap-2 lg:gap-5">
         <StyledButton btn={buttonStyle1} />
         <StyledButton btn={buttonStyle2} />
-      </div>
+      </div>}
       <div className="my-10 md:my-16 lg:my-24">
         <OurPrograms />
       </div>
