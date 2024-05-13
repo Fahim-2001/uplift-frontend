@@ -25,7 +25,7 @@ const EmployerSignUpForm = () => {
             setPassErr("");
         }
 
-        axios.post("http://localhost:8000/api/v1/user", data).then((response) => {
+        axios.post(`${import.meta.env.VITE_PUBLIC_URL}/user`, data).then((response) => {
         // console.log("User => ", response);
         localStorage.setItem("user", JSON.stringify(response.data.tokenizedUser));
         if (response.status == 201) {

@@ -17,7 +17,7 @@ const SignInForm = () => {
 
   const handleSignIn = (data) => {
     try {
-      axios.post("http://localhost:8000/api/v1/auth",data).then(response=>{
+      axios.post(`${import.meta.env.VITE_PUBLIC_URL}/auth`,data).then(response=>{
         localStorage.setItem("user", JSON.stringify(response.data.tokenizedUser));
         if (response.status == 200) {
           toast.success("Login Successful", {

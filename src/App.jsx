@@ -5,11 +5,13 @@ import routes from './routes/Routes'
 
 import { ToastContainer} from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
+import "slick-carousel/slick/slick.css";
+import "slick-carousel/slick/slick-theme.css";
 
 function App() {
 
   return (
-    <div className='mx-5'>
+    <div className='mx-5 md:mx-10 lg:mx-20'>
       <RouterProvider router={routes}></RouterProvider>
       <ToastContainer/>
     </div>
