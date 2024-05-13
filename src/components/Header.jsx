@@ -2,6 +2,7 @@ import { Button, Menu } from "@mui/material";
 import { useContext, useState } from "react";
 import { Link } from "react-router-dom";
 import { LoggedInUserContext } from "../contexts/LoggeInUserProvider";
+import Logo from "../assets/images/main_logo.png"
 
 const Header = () => {
   const [anchorEl, setAnchorEl] = useState(null);
@@ -81,7 +82,7 @@ const Header = () => {
   return (
     <section className="flex justify-between items-center mt-7 mb-10">
       <div>
-        <Link to="/">Logo</Link>
+        <Link to="/"><img src={Logo} className="h-10" alt="" /></Link>
       </div>
       <div className="hidden lg:flex gap-5">{navLinks}</div>
       <div className="lg:hidden">

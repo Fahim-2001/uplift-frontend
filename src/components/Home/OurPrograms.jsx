@@ -1,7 +1,7 @@
 import axios from "axios";
 import { useEffect, useState } from "react";
 import StyledButton from "../StyledButton";
-import { useNavigate } from "react-router-dom";
+import {  useNavigate } from "react-router-dom";
 
 const OurPrograms = () => {
   const [programs, setPrograms] = useState();
@@ -29,6 +29,7 @@ const OurPrograms = () => {
         {programs?.map((program, i) => (
           <div
             key={i}
+            to={`/programs/${program?.prgId}`}
             className="p-5 border border-primary rounded-xl hover:border-none hover:bg-primary hover:text-base hover:shadow-2xl"
           >
             <p className="text-2xl lg:text-3xl font-medium mb-3">
@@ -40,7 +41,7 @@ const OurPrograms = () => {
               </p>
               <StyledButton
                 btn={{
-                  name: "Enroll Now",
+                  name: "See details",
                   style:
                     "bg-primary hover:bg-base p-primary text-white hover:text-primary rounded-xl",
                   func: () => navigate(`/programs/${program?.prgId}`),
