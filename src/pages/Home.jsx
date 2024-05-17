@@ -12,7 +12,7 @@ const Home = () => {
     style:
       "border border-black hover:bg-gray-300 p-primary text-black rounded-xl",
     func: function () {
-      navigate("/student-signup");
+      navigate("/auth/student-signup");
     },
   };
 
@@ -20,7 +20,7 @@ const Home = () => {
     name: "Join as an Employer",
     style: "bg-primary hover:bg-hover p-primary text-white rounded-xl",
     func: function () {
-      navigate("/employer-signup");
+      navigate("/auth/employer-signup");
     },
   };
   return (

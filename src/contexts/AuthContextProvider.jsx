@@ -1,7 +1,9 @@
 import { createContext, useEffect, useState } from "react";
 
-export const LoggedInUserContext = createContext();
-const LoggeInUserProvider = ({ children }) => {
+export const AuthContext = createContext();
+const AuthContextProvider
+
+ = ({ children }) => {
   const [user, setUser] = useState();
   const [isInitialRender, setIsInitialRender] = useState(true);
   useEffect(() => {
@@ -12,10 +14,12 @@ const LoggeInUserProvider = ({ children }) => {
   }, [user, isInitialRender]);
 
   return (
-    <LoggedInUserContext.Provider value={user}>
+    <AuthContext.Provider value={user}>
       {children}
-    </LoggedInUserContext.Provider>
+    </AuthContext.Provider>
   );
 };
 
-export default LoggeInUserProvider;
+export default AuthContextProvider
+
+;

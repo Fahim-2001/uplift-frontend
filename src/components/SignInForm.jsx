@@ -25,6 +25,7 @@ const SignInForm = () => {
             autoClose: 1000,
           });
           navigate("/");
+          window.location.reload()
         } else {
           toast.warning("Login Failed, Please Try Again!", {
             position: "top-center",

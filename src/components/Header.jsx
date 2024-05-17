@@ -1,8 +1,8 @@
 import { Button, Menu } from "@mui/material";
 import { useContext, useState } from "react";
 import { Link } from "react-router-dom";
-import { LoggedInUserContext } from "../contexts/LoggeInUserProvider";
-import Logo from "../assets/images/main_logo.png"
+import { AuthContext } from "../contexts/AuthContextProvider";
+import Logo from "../assets/images/main_logo.png";
 
 const Header = () => {
   const [anchorEl, setAnchorEl] = useState(null);
@@ -13,6 +13,7 @@ const Header = () => {
   const handleClose = () => {
     setAnchorEl(null);
   };
+
   const handleSignOut = () => {
     localStorage.removeItem("user");
     window.location.reload();
@@ -21,10 +22,12 @@ const Header = () => {
   const navStyle =
     "block lg:inline rounded-md px-5 py-1 lg:mx-2 hover:bg-gray-200";
 
-  const user = useContext(LoggedInUserContext);
+  const user = useContext(AuthContext);
   const navLinks = (
     <div className="lg:flex">
-      <Link className={navStyle} to={"/programs"}>Programs</Link>
+      <Link className={navStyle} to={"/programs"}>
+        Programs
+      </Link>
       {(user?.roleId == 4 || user == null) && (
         <>
           <Link className={navStyle}>Hire From Uplift</Link>
@@ -35,7 +38,7 @@ const Header = () => {
       <Link className={navStyle}>Showcase</Link>
       <Link className={navStyle}>Blog</Link>
       {!user && (
-        <Link to="/signin" className={navStyle}>
+        <Link to="/auth/signin" className={navStyle}>
           Sign In
         </Link>
       )}
@@ -82,7 +85,9 @@ const Header = () => {
   return (
     <section className="flex justify-between items-center mt-7 mb-10">
       <div>
-        <Link to="/"><img src={Logo} className="h-10" alt="" /></Link>
+        <Link to="/">
+          <img src={Logo} className="h-10" alt="" />
+        </Link>
       </div>
       <div className="hidden lg:flex gap-5">{navLinks}</div>
       <div className="lg:hidden">

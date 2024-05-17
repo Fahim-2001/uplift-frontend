@@ -10,6 +10,7 @@ import axios from "axios";
 import ConfirmPayment from "../pages/ConfirmPayment";
 import PaymentFailed from "../pages/PaymentFailed";
 import PaymentSuccess from "../pages/PaymentSuccess";
+import AuthLayout from "../layouts/AuthLayout";
 
 const routes = createBrowserRouter([
   {
@@ -19,18 +20,6 @@ const routes = createBrowserRouter([
       {
         path: "/",
         element: <Home />,
-      },
-      {
-        path: "/student-signup",
-        element: <StudentSignUp />,
-      },
-      {
-        path: "/employer-signup",
-        element: <EmployerSignUp />,
-      },
-      {
-        path: "/signin",
-        element: <SignIn />,
       },
       {
         path: "/programs",
@@ -60,11 +49,29 @@ const routes = createBrowserRouter([
       },
       {
         path: "/payment-failed/:tranId",
-        element: <PaymentFailed/>,
+        element: <PaymentFailed />,
       },
       {
         path: "/payment-success/:tranId",
-        element: <PaymentSuccess/>,
+        element: <PaymentSuccess />,
+      },
+    ],
+  },
+  {
+    path: "/auth",
+    element: <AuthLayout/>,
+    children: [
+      {
+        path: "student-signup",
+        element: <StudentSignUp />,
+      },
+      {
+        path: "employer-signup",
+        element: <EmployerSignUp />,
+      },
+      {
+        path: "signin",
+        element: <SignIn />,
       },
     ],
   },
