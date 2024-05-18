@@ -1,13 +1,14 @@
 import { useForm } from "react-hook-form";
 import StyledButton from "./StyledButton";
-import { useRef } from "react";
+import { useRef, useState } from "react";
 import CustomInputField from "./CustomInputField";
 import axios from "axios";
 import { toast } from "react-toastify";
 import { useNavigate } from "react-router-dom";
 
 const SignInForm = () => {
-  const navigate = useNavigate()
+  const navigate = useNavigate();
+  const [customError, setCustomError] = useState("");
   const formRef = useRef();
   const {
     register,
@@ -17,22 +18,26 @@ const SignInForm = () => {
 
   const handleSignIn = (data) => {
     try {
-      axios.post(`${import.meta.env.VITE_PUBLIC_URL}/auth`,data).then(response=>{
-        localStorage.setItem("user", JSON.stringify(response.data.tokenizedUser));
-        if (response.status == 200) {
-          toast.success("Login Successful", {
-            position: "top-center",
-            autoClose: 1000,
-          });
-          navigate("/");
-          window.location.reload()
-        } else {
-          toast.warning("Login Failed, Please Try Again!", {
-            position: "top-center",
-            autoClose: 1000,
-          });
-        }
-      })
+      axios
+        .post(`${import.meta.env.VITE_PUBLIC_URL}/auth`, data)
+        .then((response) => {
+          localStorage.setItem(
+            "user",
+            JSON.stringify(response.data.tokenizedUser)
+          );
+          if (response.status === 200) {
+            navigate("/");
+            window.location.reload();
+          } else {
+            toast.warning("Login Failed, Please Try Again!", {
+              position: "top-center",
+              autoClose: 1000,
+            });
+          }
+        })
+        .catch((error) => {
+          setCustomError(error.response.data.message);
+        });
     } catch (error) {
       console.log(error.message);
     }
@@ -63,7 +68,7 @@ const SignInForm = () => {
         </div>
 
         <div className="mb-3">
-        <CustomInputField
+          <CustomInputField
             fieldData={{
               title: "Password",
               type: "password",
@@ -73,9 +78,9 @@ const SignInForm = () => {
               errMsg: "Please provide your password",
             }}
           />
-          {errors.password && (
+          {(errors.password && (
             <p className="text-red-600">{errors.password?.message}</p>
-          )}
+          ))||(customError && <p className="text-red-600">{customError}</p>)}
         </div>
         <StyledButton btn={signInBtn} />
       </form>

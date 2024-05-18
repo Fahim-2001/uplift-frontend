@@ -7,6 +7,7 @@ import Companies from "../components/Home/Companies";
 const Home = () => {
   const navigate = useNavigate();
   const user = JSON.parse(localStorage.getItem("user"));
+  
   const buttonStyle1 = {
     name: "Join as a Student",
     style:

@@ -42,7 +42,16 @@ const Header = () => {
           Sign In
         </Link>
       )}
-      {user && <Link className={navStyle}>Dashboard</Link>}
+      {user && (
+        <Link
+          to={"/dashboard"}
+          className={
+            "block lg:inline bg-primary hover:bg-hover rounded-md p-primary lg:mr-4 text-base"
+          }
+        >
+          Dashboard
+        </Link>
+      )}
 
       {!user && (
         <Link className="block lg:inline bg-primary hover:bg-hover rounded-md p-primary text-base">

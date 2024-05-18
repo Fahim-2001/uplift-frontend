@@ -6,6 +6,8 @@ const AuthContextProvider
  = ({ children }) => {
   const [user, setUser] = useState();
   const [isInitialRender, setIsInitialRender] = useState(true);
+  
+
   useEffect(() => {
     if (isInitialRender) {
       setIsInitialRender(false);
@@ -13,6 +15,7 @@ const AuthContextProvider
     }
   }, [user, isInitialRender]);
 
+  // console.log(user)
   return (
     <AuthContext.Provider value={user}>
       {children}
