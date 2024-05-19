@@ -70,13 +70,13 @@ const EmployerSignUp = () => {
       <EmployerSignUpForm/>
       <p className="text-sm text-right my-2">
         Already have an account?{" "}
-        <Link className="text-blue-900" to="/signin">
+        <Link className="text-blue-900" to="/auth/signin">
           Sign In
         </Link>
       </p>
       <p className="text-sm text-right my-2">
         Want to learn from us?{" "}
-        <Link className="text-blue-900" to="/student-signup">
+        <Link className="text-blue-900" to="/auth/student-signup">
           Join as a student.
         </Link>
       </p>

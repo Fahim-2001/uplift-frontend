@@ -10,6 +10,18 @@ import axios from "axios";
 import ConfirmPayment from "../pages/ConfirmPayment";
 import PaymentFailed from "../pages/PaymentFailed";
 import PaymentSuccess from "../pages/PaymentSuccess";
+import AuthLayout from "../layouts/AuthLayout";
+import LoggedInUsersRestriction from "../contexts/LoggedInUsersRestriction";
+import PrivateRoute from "../contexts/PrivateRoute";
+import DashboardLayout from "../layouts/DashboardLayout";
+import Analytics from "../pages/Dashboard/Analytics";
+import Users from "../pages/Dashboard/Users";
+import Instructors from "../pages/Dashboard/Instructors";
+import Employers from "../pages/Dashboard/Employers";
+import Students from "../pages/Dashboard/Students";
+import ProgramsInDash from "../pages/Dashboard/ProgramsInDash";
+import JobsInDash from "../pages/Dashboard/Jobs";
+import ProfileSettings from "../pages/Dashboard/ProfileSettings";
 
 const routes = createBrowserRouter([
   {
@@ -19,18 +31,6 @@ const routes = createBrowserRouter([
       {
         path: "/",
         element: <Home />,
-      },
-      {
-        path: "/student-signup",
-        element: <StudentSignUp />,
-      },
-      {
-        path: "/employer-signup",
-        element: <EmployerSignUp />,
-      },
-      {
-        path: "/signin",
-        element: <SignIn />,
       },
       {
         path: "/programs",
@@ -60,12 +60,76 @@ const routes = createBrowserRouter([
       },
       {
         path: "/payment-failed/:tranId",
-        element: <PaymentFailed/>,
+        element: <PaymentFailed />,
       },
       {
         path: "/payment-success/:tranId",
-        element: <PaymentSuccess/>,
+        element: <PaymentSuccess />,
       },
+    ],
+  },
+  {
+    path: "/auth",
+    element: (
+      <LoggedInUsersRestriction>
+        <AuthLayout />
+      </LoggedInUsersRestriction>
+    ),
+    children: [
+      {
+        path: "student-signup",
+        element: <StudentSignUp />,
+      },
+      {
+        path: "employer-signup",
+        element: <EmployerSignUp />,
+      },
+      {
+        path: "signin",
+        element: <SignIn />,
+      },
+    ],
+  },
+  {
+    path: "/dashboard",
+    element: (
+      <PrivateRoute>
+        <DashboardLayout />
+      </PrivateRoute>
+    ),
+    children: [
+      {
+        path: "",
+        element: <Analytics />,
+      },
+      {
+        path: "users",
+        element: <Users />,
+      },
+      {
+        path: "instructors",
+        element: <Instructors />,
+      },
+      {
+        path: "employers",
+        element: <Employers />,
+      },
+      {
+        path: "students",
+        element: <Students />,
+      },
+      {
+        path: "programs",
+        element: <ProgramsInDash />,
+      },
+      {
+        path: "jobs",
+        element: <JobsInDash />,
+      },
+      {
+        path: "profile-settings",
+        element: <ProfileSettings />,
+      }
     ],
   },
 ]);
