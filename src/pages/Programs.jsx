@@ -11,10 +11,11 @@ const Programs = () => {
           `${import.meta.env.VITE_PUBLIC_URL}/program/programs-with-instructors`
         )
         .then((res) => {
-          console.log(res), setPrograms(res?.data);
+          console.log(res);
+          setPrograms(res?.data);
         });
     };
-  }, []);
+  }, [programs]);
   console.log(programs);
   return (
     <section>

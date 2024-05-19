@@ -2,8 +2,6 @@ import axios from "axios";
 import { useEffect, useState } from "react";
 import StyledButton from "../StyledButton";
 import {  useNavigate } from "react-router-dom";
-import { toast } from "react-toastify";
-
 const OurPrograms = () => {
   const [programs, setPrograms] = useState(null);
   const navigate = useNavigate();
@@ -19,7 +17,7 @@ const OurPrograms = () => {
       .catch((err) => {
         setPrograms(null)
         console.log(err.message)});
-  }, []);
+  }, [programs]);
   
   if(programs===null || programs===undefined || programs.length === 0) return (
     <section>

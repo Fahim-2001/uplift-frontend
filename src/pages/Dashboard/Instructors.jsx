@@ -27,7 +27,7 @@ const Instructors = () => {
   return (
     <section>
       <div className="flex justify-between">
-        <p>Total employers: {data.length}</p>
+        <p>Total Instructors: {data.length}</p>
         <AddInstructor />
       </div>
       <div>

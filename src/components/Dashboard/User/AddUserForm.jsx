@@ -17,17 +17,14 @@ const AddModeratorForm = ({ props }) => {
   const handleAddInstructor = async (data) => {
     try {
       data.roleId = 2;
-      console.log(data);
       axios
         .post(`${import.meta.env.VITE_PUBLIC_URL}/user`, data)
         .then((response) => {
-          console.log(response);
           if (response?.status === 201) {
             formRef.current.reset();
             reload();
             handleClose();
           }
-          console.log(data);
         });
     } catch (error) {
       console.log(error.message);
