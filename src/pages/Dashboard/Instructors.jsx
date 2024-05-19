@@ -8,7 +8,7 @@ const Instructors = () => {
 
   useEffect(() => {
     axios
-      .get("http://localhost:8000/api/v1/instructor")
+      .get("https://uplift-backend.vercel.app/api/v1/instructor")
       .then((response) => setData(response?.data))
       .catch((err) => console.log(err.message));
   }, []);
