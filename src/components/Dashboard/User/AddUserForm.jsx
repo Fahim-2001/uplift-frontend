@@ -3,8 +3,9 @@ import CustomInputField from "../../CustomInputField";
 import { useForm } from "react-hook-form";
 import StyledButton from "../../StyledButton";
 import axios from "axios";
+import { reload } from "../../../utils/reload";
 
-const AddInstructorForm = ({ props }) => {
+const AddModeratorForm = ({ props }) => {
   const { handleClose } = props;
   const formRef = useRef();
   const {
@@ -15,12 +16,15 @@ const AddInstructorForm = ({ props }) => {
 
   const handleAddInstructor = async (data) => {
     try {
+      data.roleId = 2;
+      console.log(data);
       axios
-        .post(`${import.meta.env.VITE_PUBLIC_URL}/instructor`, data)
+        .post(`${import.meta.env.VITE_PUBLIC_URL}/user`, data)
         .then((response) => {
           console.log(response);
           if (response?.status === 201) {
             formRef.current.reset();
+            reload();
             handleClose();
           }
           console.log(data);
@@ -86,86 +90,6 @@ const AddInstructorForm = ({ props }) => {
             <p className="text-red-600">{errors.email?.message}</p>
           )}
         </div>
-
-        <div>
-          <CustomInputField
-            fieldData={{
-              title: "Phone Number",
-              type: "text",
-              placeholder: "Enter your phone",
-              register,
-              name: "phoneNumber",
-              errMsg: "Provide your phone",
-            }}
-          />
-          {errors.phoneNumber && (
-            <p className="text-red-600">{errors.phoneNumber?.message}</p>
-          )}
-        </div>
-
-        <div>
-          <CustomInputField
-            fieldData={{
-              title: "Address",
-              type: "text",
-              placeholder: "Enter your address",
-              register,
-              name: "address",
-              errMsg: "Provide your address",
-            }}
-          />
-          {errors.address && (
-            <p className="text-red-600">{errors.address?.message}</p>
-          )}
-        </div>
-
-        <div>
-          <CustomInputField
-            fieldData={{
-              title: "Working Company",
-              type: "text",
-              placeholder: "Enter your working company",
-              register,
-              name: "workingCompany",
-              errMsg: "Provide your working company",
-            }}
-          />
-          {errors.workingCompany && (
-            <p className="text-red-600">{errors.workingCompany?.message}</p>
-          )}
-        </div>
-
-        <div>
-          <CustomInputField
-            fieldData={{
-              title: "Position",
-              type: "text",
-              placeholder: "Enter your position",
-              register,
-              name: "position",
-              errMsg: "Provide your position",
-            }}
-          />
-          {errors.position && (
-            <p className="text-red-600">{errors.position?.message}</p>
-          )}
-        </div>
-
-        <div>
-          <CustomInputField
-            fieldData={{
-              title: "Salary",
-              type: "number",
-              placeholder: "Enter your salary",
-              register,
-              name: "salary",
-              errMsg: "Provide your salary",
-            }}
-          />
-          {errors.position && (
-            <p className="text-red-600">{errors.position?.message}</p>
-          )}
-        </div>
       </div>
 
       <div className="flex justify-center">
@@ -175,4 +99,4 @@ const AddInstructorForm = ({ props }) => {
   );
 };
 
-export default AddInstructorForm;
+export default AddModeratorForm;

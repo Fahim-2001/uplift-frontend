@@ -8,10 +8,21 @@ const Instructors = () => {
 
   useEffect(() => {
     axios
-      .get("https://uplift-backend.vercel.app/api/v1/instructor")
+      .get(`${import.meta.env.VITE_PUBLIC_URL}/instructor`)
       .then((response) => setData(response?.data))
       .catch((err) => console.log(err.message));
-  }, []);
+  }, [data]);
+
+  const handleDeleteUser = (email) => {
+    try {
+      if (email == null) throw new Error("No instructor email found!");
+      axios
+        .delete(`${import.meta.env.VITE_PUBLIC_URL}/instructor/${email}`)
+        .then((res) => console.log(res));
+    } catch (error) {
+      console.log(error.message);
+    }
+  };
 
   return (
     <section>
@@ -20,7 +31,7 @@ const Instructors = () => {
         <AddInstructor />
       </div>
       <div>
-        <InstructorsTable rows={data} />
+        <InstructorsTable rows={{data,handleDeleteUser}} />
       </div>
     </section>
   );
