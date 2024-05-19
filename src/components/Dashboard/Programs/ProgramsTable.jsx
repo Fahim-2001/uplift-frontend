@@ -10,61 +10,61 @@ import { useState } from "react";
 import { MdOutlineDeleteOutline } from "react-icons/md";
 
 const columns = [
-  { id: "instId", label: "Id", minWidth: 50 },
-  { id: "firstName", label: "First Name", align: "left", minWidth: 120 },
+  { id: "prgId", label: "Program Id", minWidth: 50 },
+  { id: "courseTitle", label: "Course Title", align: "left", minWidth: 120 },
   {
-    id: "lastName",
-    label: "Last Name",
-    minWidth: 120,
+    id: "price",
+    label: "Regular",
+    minWidth: 80,
     align: "left",
-    format: (value) => value.toLocaleString("en-US"),
+    format: (value) => value.toFixed(2),
   },
   {
-    id: "email",
-    label: "Email Address",
-    minWidth: 170,
+    id: "offerPrice",
+    label: "Offer",
+    minWidth: 80,
     align: "left",
-    format: (value) => value.toLocaleString("en-US"),
+    format: (value) => value.toFixed(2),
   },
   {
-    id: "phone",
-    label: "Phone Number",
-    minWidth: 170,
+    id: "totalClasses",
+    label: "Total Classes",
+    minWidth: 50,
     align: "left",
-    format: (value) => value.toLocaleString("en-US"),
+    format: (value) => value.toFixed(),
   },
   {
-    id: "address",
-    label: "Address ",
-    minWidth: 170,
-    align: "left",
-    format: (value) => value.toLocaleString("en-US"),
-  },
-  {
-    id: "workingCompany",
-    label: "Working Company",
-    minWidth: 170,
-    align: "left",
-    format: (value) => value.toLocaleString("en-US"),
-  },
-  {
-    id: "position",
-    label: "Position",
-    minWidth: 200,
-    align: "left",
-    format: (value) => value.toLocaleString("en-US"),
-  },
-  {
-    id: "salary",
-    label: "Salary (BDT)",
+    id: "duration",
+    label: "Duration of the course",
     minWidth: 170,
     align: "left",
     format: (value) => value.toFixed(2),
   },
+  {
+    id: "perWeekLiveClasses",
+    label: "Classes (Per Week)",
+    minWidth: 170,
+    align: "left",
+    format: (value) => value.toFixed(2),
+  },
+  {
+    id: "totalEnrolled",
+    label: "Total Enrolled",
+    minWidth: 70,
+    align: "left",
+    format: (value) => value.toFixed(2),
+  },
+  {
+    id: "maxStudentLimit",
+    label: "Max Limit",
+    minWidth: 70,
+    align: "left",
+    format: (value) => value.toFixed(2),
+  },{},{}
 ];
 
-const InstructorsTable = ({ rows }) => {
-  const {data,handleDeleteUser} = rows;
+const ProgramsTable = ({ rows }) => {
+  const {data,handleDeleteProgram} = rows;
   const [page, setPage] = useState(0);
   const [rowsPerPage, setRowsPerPage] = useState(10);
 
@@ -116,9 +116,9 @@ const InstructorsTable = ({ rows }) => {
                             );
                           })}
                           <button
-                            className="my-4 ml-[-60px] px-4-3"
+                            className="my-10 ml-[-60px] px-4-3"
                             disabled = {row?.roleId === 1 && true}
-                            onClick={() => handleDeleteUser(row?.email)}
+                            onClick={() => handleDeleteProgram(row?.prgId)}
                           >
                             <MdOutlineDeleteOutline color={row?.roleId === 1?"grey":"red"} />
                           </button>
@@ -144,4 +144,4 @@ const InstructorsTable = ({ rows }) => {
   );
 };
 
-export default InstructorsTable;
+export default ProgramsTable;

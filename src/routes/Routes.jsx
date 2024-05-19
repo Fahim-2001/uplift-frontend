@@ -34,13 +34,6 @@ const routes = createBrowserRouter([
       },
       {
         path: "/programs",
-        loader: async () => {
-          return await axios.get(
-            `${
-              import.meta.env.VITE_PUBLIC_URL
-            }/program/programs-with-instructors`
-          );
-        },
         element: <Programs />,
       },
       {

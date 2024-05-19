@@ -6,11 +6,12 @@ import TableContainer from "@mui/material/TableContainer";
 import TableHead from "@mui/material/TableHead";
 import TablePagination from "@mui/material/TablePagination";
 import TableRow from "@mui/material/TableRow";
-import { useState } from "react";
 import { MdOutlineDeleteOutline } from "react-icons/md";
+import { useState } from "react";
 
 const columns = [
-  { id: "instId", label: "Id", minWidth: 50 },
+  { id: "id", label: "Id", minWidth: 50 },
+
   { id: "firstName", label: "First Name", align: "left", minWidth: 120 },
   {
     id: "lastName",
@@ -27,44 +28,23 @@ const columns = [
     format: (value) => value.toLocaleString("en-US"),
   },
   {
-    id: "phone",
-    label: "Phone Number",
+    id: "roleId",
+    label: "Role Id",
+    minWidth: 50,
+    align: "left",
+    format: (value) => value.toFixed(),
+  },
+  {
+    id: "registeredAt",
+    label: "Joined In",
     minWidth: 170,
     align: "left",
     format: (value) => value.toLocaleString("en-US"),
-  },
-  {
-    id: "address",
-    label: "Address ",
-    minWidth: 170,
-    align: "left",
-    format: (value) => value.toLocaleString("en-US"),
-  },
-  {
-    id: "workingCompany",
-    label: "Working Company",
-    minWidth: 170,
-    align: "left",
-    format: (value) => value.toLocaleString("en-US"),
-  },
-  {
-    id: "position",
-    label: "Position",
-    minWidth: 200,
-    align: "left",
-    format: (value) => value.toLocaleString("en-US"),
-  },
-  {
-    id: "salary",
-    label: "Salary (BDT)",
-    minWidth: 170,
-    align: "left",
-    format: (value) => value.toFixed(2),
   },
 ];
 
-const InstructorsTable = ({ rows }) => {
-  const {data,handleDeleteUser} = rows;
+const UsersTable = ({ rows }) => {
+  const { data, handleDeleteUser } = rows;
   const [page, setPage] = useState(0);
   const [rowsPerPage, setRowsPerPage] = useState(10);
 
@@ -109,9 +89,11 @@ const InstructorsTable = ({ rows }) => {
                             const value = row[column.id];
                             return (
                               <TableCell key={column.id} align={column.align}>
-                                {column.format && typeof value === "number"
-                                  ? column.format(value)
-                                  : value}
+                                <p>
+                                  {column.format && typeof value === "number"
+                                    ? column.format(value)
+                                    : value}
+                                </p>
                               </TableCell>
                             );
                           })}
@@ -144,4 +126,4 @@ const InstructorsTable = ({ rows }) => {
   );
 };
 
-export default InstructorsTable;
+export default UsersTable;

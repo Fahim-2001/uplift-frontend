@@ -3,8 +3,6 @@ import CustomInputField from "../../CustomInputField";
 import { useForm } from "react-hook-form";
 import StyledButton from "../../StyledButton";
 import axios from "axios";
-import { toast } from "react-toastify";
-import { reload } from "../../../utils/reload";
 
 const AddInstructorForm = ({ props }) => {
   const { handleClose } = props;
@@ -18,12 +16,11 @@ const AddInstructorForm = ({ props }) => {
   const handleAddInstructor = async (data) => {
     try {
       axios
-        .post("https://uplift-backend.vercel.app/api/v1/instructor", data)
+        .post(`${import.meta.env.VITE_PUBLIC_URL}/instructor`, data)
         .then((response) => {
           console.log(response);
           if (response?.status === 201) {
             formRef.current.reset();
-            reload()
             handleClose();
           }
           console.log(data);
