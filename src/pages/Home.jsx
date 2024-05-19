@@ -7,12 +7,13 @@ import Companies from "../components/Home/Companies";
 const Home = () => {
   const navigate = useNavigate();
   const user = JSON.parse(localStorage.getItem("user"));
+  
   const buttonStyle1 = {
     name: "Join as a Student",
     style:
       "border border-black hover:bg-gray-300 p-primary text-black rounded-xl",
     func: function () {
-      navigate("/student-signup");
+      navigate("/auth/student-signup");
     },
   };
 
@@ -20,7 +21,7 @@ const Home = () => {
     name: "Join as an Employer",
     style: "bg-primary hover:bg-hover p-primary text-white rounded-xl",
     func: function () {
-      navigate("/employer-signup");
+      navigate("/auth/employer-signup");
     },
   };
   return (

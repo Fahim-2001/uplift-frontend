@@ -2,23 +2,33 @@ import axios from "axios";
 import { useEffect, useState } from "react";
 import StyledButton from "../StyledButton";
 import {  useNavigate } from "react-router-dom";
+import { toast } from "react-toastify";
 
 const OurPrograms = () => {
-  const [programs, setPrograms] = useState();
+  const [programs, setPrograms] = useState(null);
   const navigate = useNavigate();
 
   useEffect(() => {
     axios
       .get(`${import.meta.env.VITE_PUBLIC_URL}/program`)
       .then((response) => {
-        if (response?.status == 200) {
+        if (response?.status === 200) {
           setPrograms(response?.data);
         }
       })
-      .catch((err) => console.log(err.message));
+      .catch((err) => {
+        setPrograms(null)
+        console.log(err.message)});
   }, []);
-
-  // console.log(programs);
+  
+  if(programs===null || programs===undefined || programs.length === 0) return (
+    <section>
+      <p className="text-2xl lg:text-3xl text-primary font-bold my-10">
+        Our Programs
+      </p>
+      <p>No programs available right now.</p>
+    </section>
+  )
 
   return (
     <section>

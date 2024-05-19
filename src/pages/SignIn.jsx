@@ -70,11 +70,11 @@ const SignIn = () => {
         <SignInForm />
         <p className="text-sm text-right my-2">
           Don&apos;t have any account?{" "}
-          <Link className="text-blue-900" to="/student-signup">
+          <Link className="text-blue-900" to="/auth/student-signup">
             Join as a Student{" "}
           </Link>
           or{" "}
-          <Link className="text-blue-900" to="/employer-signup">
+          <Link className="text-blue-900" to="/auth/employer-signup">
             an Employer
           </Link>
         </p>
