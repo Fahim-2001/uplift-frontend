@@ -18,7 +18,7 @@ const AddInstructorForm = ({ props }) => {
   const handleAddInstructor = async (data) => {
     try {
       axios
-        .post("http://localhost:8000/api/v1/instructor", data)
+        .post("https://uplift-backend.vercel.app/api/v1/instructor", data)
         .then((response) => {
           console.log(response);
           if (response?.status === 201) {
